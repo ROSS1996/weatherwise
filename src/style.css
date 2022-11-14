@@ -1,0 +1,28 @@
+#topBar {
+    background-color: rgb(28, 87, 28);
+    color: rgb(252, 252, 252);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 20px;
+}
+
+#searchCity {
+    border-radius: 20px;
+    background-color: lightgreen;
+    border: none;
+    padding: 10px;
+    text-indent: 20px;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/5/55/Magnifying_glass_icon.svg");
+    background-repeat: no-repeat;
+    background-position: 10px 11px;
+    background-size: 15px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
