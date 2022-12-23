@@ -7,39 +7,46 @@
     <title>Weather App</title>
 </head>
 <body>
-    <div id="main">
+    <header>
         <nav id="topBar">
             <div id="logo"><h1><a href="./index.html">WeatherApp</a></h1></div>
             <form action="" method="get" id="searchNewCity">
                 <input type="search" name="city" id="searchCity" placeholder="City Name">
             </form>
         </nav>
-        <main id="weatherData">
-            <h2 id="cityName"></h2>
-            <div id='currentWeather' class="row">
-            </div>
-            <div class="row">
-                <h3>Temperature</h3>
-                <p id="temperature"></p>
-            </div>
-            <div class="row">
-                <h3>Feels Like</h3>
-                <p id="feelsLike"></p>
-            </div>
-            <div class="row">
-                <h3>Minimum Temperature</h3>
-                <p id="tempMin"></p>
-            </div>
-            <div class="row">
-                <h3>Maximum Temperature</h3>
-                <p id="tempMax"></p>
-            </div>
-            <div class="row">
-                <h3>Humidity</h3>
-                <p id="humidity"></p>
+    </header>
+        <main id="background">
+            <div id="weatherData">
+                <h2 id="cityName"></h2>
+                <div id='currentWeather' class="column">
+                    <h3>Weather</h3>
+                    <div class="row">
+                        <p id="weather"></p>
+                        <img src="" alt="" id="weatherIcon"/>
+                    </div>
+                </div>
+                <div class="column">
+                    <h3>Temperature</h3>
+                    <p id="temperature"></p>
+                </div>
+                <div class="column">
+                    <h3>Feels Like</h3>
+                    <p id="feelsLike"></p>
+                </div>
+                <div class="column">
+                    <h3>Minimum Temperature</h3>
+                    <p id="tempMin"></p>
+                </div>
+                <div class="column">
+                    <h3>Maximum Temperature</h3>
+                    <p id="tempMax"></p>
+                </div>
+                <div class="column">
+                    <h3>Humidity</h3>
+                    <p id="humidity"></p>
+                </div>
             </div>
         </main>
-    </div>
     <script src="main.js"></script>
 </body>
 </html>

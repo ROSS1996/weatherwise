@@ -39,19 +39,38 @@
     background-size: 15px;
 }
 
-main {
+#weatherData {
+    height: 500px;
     display: flex;
     flex-direction: column;
-    height: 88vh;
     align-items: center;
+    justify-content: center;
     padding: 20px;
-    background-color: #dbc6c6;
+    background-color: rgba(111, 123, 233, 0.7);
+    width: 300px;
+    border-radius: 10px;
+    border: 1px solid slategray;
+}
+
+main {
+    height: 89vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .row {
-    margin: 10px;
     display: flex;
     flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.column {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 10px;
 }
