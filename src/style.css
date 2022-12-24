@@ -6,6 +6,19 @@
     padding: 0;
 }
 
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
+#cityName {
+    font-size: 1.4rem;
+}
+
+.field {
+    font-size: 1.1rem;
+}
+
 #logo a {
     text-decoration: none;
     color: #ffffff;
@@ -24,12 +37,12 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    padding: 20px;
+    height: 10vh;
 }
 
 #searchCity {
     border-radius: 20px;
-    background-color: #90ee90;
+    background-color: rgba(144, 238, 144, 0.7);
     border: none;
     padding: 10px;
     text-indent: 20px;
@@ -39,21 +52,26 @@
     background-size: 15px;
 }
 
+#weatherIcon {
+    width: 3.125rem;
+    height: 3.125rem;
+}
+
 #weatherData {
-    height: 500px;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 20px;
-    background-color: rgba(111, 123, 233, 0.7);
-    width: 300px;
+    background-color: rgba(111, 123, 233, 0.685);
+    width: fit-content;
     border-radius: 10px;
     border: 1px solid slategray;
 }
 
 main {
-    height: 89vh;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     align-items: center;
