@@ -8,7 +8,7 @@ Web application that fetches weather data from [OpenWeather API](https://openwea
 
 ## Links
 
-- Live Site URL: [https://ross1996.github.io/web-calculator/](https://ross1996.github.io/web-calculator/)
+- Live Site URL: [https://ross1996.github.io/weatherapp/](https://ross1996.github.io/weatherapp/)
 
 ## Built with
 
