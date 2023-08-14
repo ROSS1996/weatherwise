@@ -4,7 +4,7 @@ Web application that fetches weather data from [OpenWeather API](https://openwea
 
 ## Screenshot
 
-![](./screenshot.png)
+![](./mockup.png)
 
 ## Links
 
