@@ -94,19 +94,19 @@ function App() {
         <div id="otherWeather">
           <p>
             <span className='measurement'>Feels Like</span>
-            <span>{weatherData?.main.feels_like}</span>
+            <span>{weatherData?.main.feels_like}º</span>
           </p>
           <p>
             <span className='measurement'>Minimum Temperature</span>
-            <span>{weatherData?.main.temp_min}</span>
+            <span>{weatherData?.main.temp_min}º</span>
           </p>
           <p>
             <span className='measurement'>Maximum Temperature</span>
-            <span>{weatherData?.main.temp_max}</span>
+            <span>{weatherData?.main.temp_max}º</span>
           </p>
           <p>
             <span className='measurement'>Humidity</span>
-            <span>{weatherData?.main.humidity}</span>
+            <span>{weatherData?.main.humidity}º</span>
           </p>
         </div>
       </main>
