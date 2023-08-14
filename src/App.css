@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 
-
 * {
   margin: 0;
   padding: 0;
@@ -21,17 +20,16 @@ body {
   background-color: #0f223f;
 }
 
-
 #otherWeather {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  filter: drop-shadow(0px 0px 2px rgba(188, 187, 187, 0.25));
   border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.10);
   background: rgba(255, 216, 140, 0.20);
   padding: 11px;
   list-style-type: none;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
 }
 
 #weatherInfo {
@@ -54,12 +52,10 @@ body {
   font-size: 2.2rem;
 }
 
-
 #otherWeather p {
   display: flex;
   justify-content: space-between;
   gap: 40px;
-  filter: drop-shadow(0px 3px 2px rgba(0, 0, 0, 0.25));
   color: #F0F0F0;
   font-style: normal;
   line-height: normal;
@@ -71,7 +67,21 @@ body {
 }
 
 #changeCity {
+  display: flex;
+  align-items: center;
+  gap: 5px;
   cursor: pointer;
+  font-size: 0.85rem;
+  border: 1px solid white;
+  padding: 3px;
+  border-radius: 4px;
+  color: #F0F0F0;
+  background-color: rgba(255, 216, 140, 0.20);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+#changeCity img {
+  width: 20px;
 }
 
 main {
@@ -89,6 +99,7 @@ header {
   justify-content: space-between;
   font-size: 1.4rem;
   max-width: 800px;
+  gap: 25px;
 }
 
 .modal {

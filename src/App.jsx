@@ -77,6 +77,7 @@ function App() {
       <header>
         <h2 id="cityName">{weatherData?.name}</h2>
         <div onClick={openModal} id='changeCity'>
+          <span>Change city</span>
           <img src={Gearlogo} alt="" />
         </div>
       </header>
@@ -113,7 +114,7 @@ function App() {
         <div className="modal" onClick={closeModal} >
           <div className="modal-content" onClick={(e) => e.stopPropagation()} onKeyDown={handleKeyDown}>
             <span className="close" onClick={closeModal}>
-              &times;
+              X
             </span>
             <h2>Enter City Name</h2>
             <input
