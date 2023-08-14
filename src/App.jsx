@@ -106,7 +106,7 @@ function App() {
           </p>
           <p>
             <span className='measurement'>Humidity</span>
-            <span>{weatherData?.main.humidity}º</span>
+            <span>{weatherData?.main.humidity}</span>
           </p>
         </div>
       </main>
