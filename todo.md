@@ -1,5 +1,3 @@
-1. Add error handling to the modal so that when the user types an invalid city, it has a fallback.
+1. include a component showing the weather of all the cities in the cities array
 
-2. Finish the desktop version.
-
-3. include a component showing the weather of all the cities in the cities array
+2. add new method to get the city using the browser's latitude and longitude
