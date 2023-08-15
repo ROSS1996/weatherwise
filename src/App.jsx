@@ -7,20 +7,29 @@ function App() {
   const [weatherData, setWeatherData] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [cityInput, setCityInput] = useState('');
-
+  const [storedCity, setStoredCity] = useState('');
 
   const cities = ['Washington', 'New York', 'Los Angeles', 'Toronto', 'Mexico City', 'London', 'Paris', 'Madrid', 'Rome, IT', 'Berlin', 'Moscow', 'Rio de Janeiro', 'Sao Paulo', 'Tokyo', 'Beijing', 'Seoul', 'Dehli'];
-
 
   async function getData(city) {
     try {
       const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=4ac58ea560a4d5f7c1bffa9834a17203`);
       const data = await response.json();
-      setWeatherData(data);
-      updateBackgroundColor(data?.weather[0].icon);
+  
+      if (response.ok) {
+        setWeatherData(data);
+        updateBackgroundColor(data?.weather[0].icon);
+      } else {
+        console.error('Error fetching weather data:', data);
+        if (cityInput !== city) {
+          alert(`City '${city}' not found.`);
+        }
+      }
     } catch (error) {
       console.error('Error fetching weather data:', error);
-      alert('City not found');
+      if (cityInput !== city) {
+        alert(`City '${city}' not found.`);
+      }
     }
   }
 
@@ -35,10 +44,10 @@ function App() {
   async function handleSubmit() {
     if (cityInput) {
       await getData(cityInput);
+      setStoredCity(cityInput);
       closeModal();
     }
   }
-
 
   function handleKeyDown(event) {
     if (event.key === 'Enter') {
@@ -48,16 +57,61 @@ function App() {
     }
   }
 
+  useEffect(() => {
+    const storedCity = localStorage.getItem('storedCity');
+    if (storedCity) {
+      setStoredCity(storedCity);
+    }
+  }, []);
 
   useEffect(() => {
+    if (storedCity) {
+      localStorage.setItem('storedCity', storedCity);
+    }
+  }, [storedCity]);
+
+  useEffect(() => {
+    const storedCity = localStorage.getItem('storedCity');
+
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    let city = urlParams.get('city');
-    if (city === null) {
-      city = cities[Math.floor(Math.random() * cities.length)];
+    const urlCity = urlParams.get('city');
+
+    if (urlCity) {
+      getData(urlCity)
+        .catch(() => {
+          // Fallback to the stored city if the URL city fails
+          if (storedCity) {
+            getData(storedCity)
+              .catch(() => {
+                // Fallback to a random city from the array if both URL and stored city fail
+                const randomCity = cities[Math.floor(Math.random() * cities.length)];
+                getData(randomCity);
+              });
+          } else {
+            // Fallback to a random city from the array if no stored city
+            const randomCity = cities[Math.floor(Math.random() * cities.length)];
+            getData(randomCity);
+          }
+        });
+    } else if (storedCity) {
+      getData(storedCity)
+        .catch(() => {
+          // Fallback to a random city from the array if the stored city fails
+          const randomCity = cities[Math.floor(Math.random() * cities.length)];
+          getData(randomCity);
+        });
+    } else {
+      // If no URL parameter and no stored city, use a random city from the array
+      const randomCity = cities[Math.floor(Math.random() * cities.length)];
+      getData(randomCity);
     }
-    getData(city);
   }, []);
+
+
+
+
+  
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
@@ -71,17 +125,16 @@ function App() {
     document.body.classList.toggle('night', isNight);
   }
 
-
   return (
     <>
       <header>
-        <h2 id="cityName">{weatherData?.name}</h2>
-        <div onClick={openModal} id='changeCity'>
-          <span>Change city</span>
-          <img src={Gearlogo} alt="" />
+        <div id='city'>
+          <h2 id="cityName">{weatherData?.name}</h2>
+          <div onClick={openModal} id='changeCity'>
+            <span>Change city</span>
+            <img src={Gearlogo} alt="" />
+          </div>
         </div>
-      </header>
-      <main id="background" >
         <div id='weatherInfo'>
           <div id='weatherImage'>
             <img src={`https://openweathermap.org/img/wn/${weatherData?.weather[0].icon}@4x.png`}
@@ -91,6 +144,8 @@ function App() {
           <p id="temperature">{weatherData?.main.temp}º</p>
           <p id="weather">{weatherData?.weather[0].main}</p>
         </div>
+      </header>
+      <main id="background" >
         <div id="otherWeather">
           <p>
             <span className='measurement'>Feels Like</span>

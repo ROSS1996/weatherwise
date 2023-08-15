@@ -9,11 +9,20 @@ body {
   background-color: #3479E1;
   color: #FFFFFF;
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Raleway', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#root {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  height: 100vh;
-  font-family: 'Raleway', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .night {
@@ -93,13 +102,20 @@ main {
   max-width: 800px;
 }
 
-header {
+#city {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-direction: row;
   font-size: 1.4rem;
   max-width: 800px;
   gap: 25px;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .modal {
@@ -110,7 +126,6 @@ header {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
-  /* Semi-transparent background */
   align-items: center;
   justify-content: center;
   z-index: 1000;
@@ -123,7 +138,6 @@ header {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   width: 300px;
   position: relative;
-  /* Ensure positioning of the close button */
 }
 
 .close {
@@ -162,7 +176,37 @@ button {
 }
 
 @media (orientation: landscape) {
-  body {
-    flex-direction: column;
+  #root {
+    display: flex;
+    flex-direction: row;
+    gap: 200px;
+    padding: 50px;
+    border-radius: 5px;
+    background-color: rgba(141, 141, 141, 0.144);
+    border: 1px solid rgba(197, 197, 197, 0.301);
+  }
+
+  #changeCity {
+    width: fit-content;
+  }
+  
+  #city {
+    gap: 60px;
+  }
+
+  .night #root {
+    background-color: rgba(141, 141, 141, 0.037);
+    border: 1px solid rgba(197, 197, 197, 0.151);
+  }
+
+  header {
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (orientation: landscape) {
+  #weatherIcon {
+    width: 120px;
   }
 }
